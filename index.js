@@ -88,7 +88,7 @@ app.get('/order/:id', checkOrderId, allMethodAndURL, (request, response) => {
 
     const index = request.orderIndex
 
-    return response.status(205).json(customer[index])
+    return response.status(202).json(customer[index])
 
 
 })
@@ -103,7 +103,7 @@ app.patch('/order/:id', checkOrderId, allMethodAndURL, (request, response) => {
 
     customer[index] = newStatus
 
-    return response.status(210).json(newStatus)
+    return response.status(202).json(newStatus)
 
 })
 
