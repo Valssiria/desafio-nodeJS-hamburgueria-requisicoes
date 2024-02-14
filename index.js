@@ -39,17 +39,19 @@ const allMethodAndURL = (request, response, next) => {
 
 /* ROTA DO POST => CRIAR INFORMAÇÃO */
 app.post('/order', allMethodAndURL, (request, response) => {
-    try{
+    try {
 
-    const { order, clientName, price, status } = request.body
+        const { order, clientName, price, status } = request.body
 
-    const NewClient = { id: uuid.v4(), order, clientName, price, status: "Em Preparação" }
+        const NewClient = { id: uuid.v4(), order, clientName, price, status: "Em Preparação" }
 
-    customer.push(NewClient)
+        customer.push(NewClient)
 
-    return response.status(201).json(NewClient)
-    } catch(err) {
-        return response.status(500).json({error: err.message})
+        return response.status(201).json(NewClient)
+    } catch (err) {
+        return response.status(500).json({ error: err.message })
+    } finally {
+        console.log("Terminou Tudo");
     }
 
 })
