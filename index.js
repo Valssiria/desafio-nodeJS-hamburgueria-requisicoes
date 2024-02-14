@@ -39,6 +39,7 @@ const allMethodAndURL = (request, response, next) => {
 
 /* ROTA DO POST => CRIAR INFORMAÇÃO */
 app.post('/order', allMethodAndURL, (request, response) => {
+    try{
 
     const { order, clientName, price, status } = request.body
 
@@ -47,6 +48,9 @@ app.post('/order', allMethodAndURL, (request, response) => {
     customer.push(NewClient)
 
     return response.status(201).json(NewClient)
+    } catch(err) {
+        return response.status(500).json({error: err.message})
+    }
 
 })
 
